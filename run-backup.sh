@@ -7,7 +7,7 @@ unzip awscli-bundle.zip
 chmod +x ./awscli-bundle/install
 ./awscli-bundle/install -i /tmp/aws
 
-echo "aws-cli finished installing"
+echo "aws-cli finished installig"
 # new backup file name
 BACKUP_FILE_NAME="$(date +"%Y-%m-%d-%H-%M")-$APP-$DATABASE.sql"
 

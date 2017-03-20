@@ -1,0 +1,13 @@
+{
+  "name": "mysql-s3-backup-spike",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "",
+    "backup": "./scripts/run-backup.sh",
+    "postinstall": "npm run backup"
+  },
+  "author": "",
+  "license": "ISC"
+}

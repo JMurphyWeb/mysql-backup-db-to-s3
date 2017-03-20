@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Beginning database backup"
+echo "Beginning database bacskup"
 
 #install aws-cli
 curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip

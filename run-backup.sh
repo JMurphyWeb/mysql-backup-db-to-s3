@@ -15,6 +15,8 @@ if [ ! -d "/tmp/db-backups" ]; then
   mkdir -p /tmp/db-backups/
 fi
 
+echo $(which mysql)
+echo $(which mysqldump)
 # dump the current DB into /tmp/db-backups/<new-file-name>
 /usr/local/bin/mysqldump -u $CLEARDB_USER_NAME -h $CLEARDB_SERVER_IP -p$CLEARDB_PASSWORD --databases $DATABASE | gzip -c > "/tmp/db-backups/$BACKUP_FILE_NAME.gz"
 

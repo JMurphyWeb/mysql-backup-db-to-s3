@@ -22,7 +22,7 @@ echo $(which mysql)
 echo $(which mysqldump)
 
 # dump the current DB into /tmp/db-backups/<new-file-name>
-/app/bin/mysqldump -u $CLEARDB_USER_NAME -h $CLEARDB_SERVER_IP -p$CLEARDB_PASSWORD --databases $DATABASE | gzip -c > "/tmp/db-backups/$BACKUP_FILE_NAME.gz"
+./bin/mysqldump -u $CLEARDB_USER_NAME -h $CLEARDB_SERVER_IP -p$CLEARDB_PASSWORD --databases $DATABASE | gzip -c > "/tmp/db-backups/$BACKUP_FILE_NAME.gz"
 
 # using the aws cli, copy the new backup to our s3 bucket
 /tmp/aws/bin/aws s3 cp /tmp/db-backups/$BACKUP_FILE_NAME.gz s3://$S3_BUCKET_PATH/$DATABASE/$BACKUP_FILE_NAME.gz --region=$AWS_DEFAULT_REGION

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "",
-    "backup": "./run-backup.sh",
+    "backup": "bash ./run-backup.sh",
     "postinstall": "npm run backup"
   },
   "author": "",

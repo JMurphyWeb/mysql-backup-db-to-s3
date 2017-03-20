@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "",
+    "start": "index.js",
     "backup": "bash ./run-backup.sh",
     "postinstall": "npm run backup"
   },

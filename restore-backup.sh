@@ -29,13 +29,13 @@ if [ ! -d "/tmp/s3-backups" ]; then
 fi
 
 # copy specified backup to /tmp/s3-backups
-/tmp/aws/bin/aws s3 cp s3://$S3_BUCKET_PATH/$DATABASE/$BACKUP_FILE_NAME.gz /tmp/s3-backups/$BACKUP_FILE_NAME-zipped.gz --region eu-west-1
+/tmp/aws/bin/aws s3 cp s3://$S3_BUCKET_PATH/$DATABASE/$BACKUP_FILE_NAME.gz /tmp/s3-backups/$BACKUP_FILE_NAME.gz --region eu-west-1
 
 echo "finished downloading the dump:"
-echo $(cat /tmp/s3-backups/$BACKUP_FILE_NAME-zipped.gz)
+echo $(cat /tmp/s3-backups/$BACKUP_FILE_NAME.gz)
 
 # unzip backup file into the same folder
-gzip -d /tmp/s3-backups/$BACKUP_FILE_NAME-zipped.gz > /tmp/s3-backups/$BACKUP_FILE_NAME
+gzip -d /tmp/s3-backups/$BACKUP_FILE_NAME.gz > /tmp/s3-backups/$BACKUP_FILE_NAME
 
 echo "finished unzipping the dump:"
 echo $(cat /tmp/s3-backups/$BACKUP_FILE_NAME)

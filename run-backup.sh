@@ -1,10 +1,12 @@
 #!/bin/bash
 
-#install aws-cli
-curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
-unzip awscli-bundle.zip
-chmod +x ./awscli-bundle/install
-./awscli-bundle/install -i /tmp/aws
+#install aws-cli if it doesn't exist
+if [ ! -d "/tmp/aws" ]; then
+  curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
+  unzip awscli-bundle.zip
+  chmod +x ./awscli-bundle/install
+  ./awscli-bundle/install -i /tmp/aws
+fi
 
 # new backup file name
 BACKUP_FILE_NAME="$(date +"%Y-%m-%d-%H-%M")-$APP-$DATABASE.sql"

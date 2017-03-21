@@ -1,5 +1,5 @@
 .env
-
+*.env
 awscli-bundle/
 \awscli-bundle.zip
 production-db.sh

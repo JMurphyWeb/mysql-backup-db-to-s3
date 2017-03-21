@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 #install aws-cli if it doesn't exist
 if [ ! -d "/tmp/aws" ]; then
   curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip

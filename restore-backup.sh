@@ -9,6 +9,14 @@ if [ ! $SHOULD_CONTINUE = y ]; then
   exit
 fi
 
+#install aws-cli if it doesn't exist
+if [ ! -d /tmp/aws ]; then
+  curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
+  unzip awscli-bundle.zip
+  chmod +x ./awscli-bundle/install
+  ./awscli-bundle/install -i /tmp/aws
+fi
+
 # create a backup before attempting to overwrite the current DB
 
 

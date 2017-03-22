@@ -18,7 +18,7 @@ if [ ! -d "/tmp/aws" ]; then
 fi
 
 # create a backup before attempting to overwrite the current DB
-
+bash ./run-backup.sh
 
 
 # create /tmp/s3-backups directory if it doesn't already exist
@@ -27,7 +27,7 @@ if [ ! -d "/tmp/s3-backups" ]; then
 fi
 
 # copy specified backup to /tmp/s3-backups
-/tmp/aws/bin/aws s3 cp s3://$S3_BUCKET_PATH/$DATABASE/$BACKUP_FILE_NAME.gz /tmp/s3-backups/$BACKUP_FILE_NAME.gz --region eu-west-1
+/tmp/aws/bin/aws s3 cp s3://$S3_BUCKET_PATH/$DATABASE/$BACKUP_FILE_NAME.gz /tmp/s3-backups/$BACKUP_FILE_NAME.gz --region $AWS_DEFAULT_REGION
 
 echo "finished downloading the dump:"
 echo $(cat /tmp/s3-backups/$BACKUP_FILE_NAME.gz)
@@ -39,4 +39,4 @@ echo "finished unzipping the dump:"
 echo $(cat /tmp/s3-backups/$BACKUP_FILE_NAME)
 
 # run mysql with the dump file
-mysql -u $CLEARDB_USER_NAME -p$CLEARDB_PASSWORD $DATABASE < /tmp/s3-backups/$BACKUP_FILE_NAME
+mysql -u $CLEARDB_USER_NAME -p$CLEARDB_PASSWORD -h $CLEARDB_SERVER_IP $DATABASE < /tmp/s3-backups/$BACKUP_FILE_NAME
